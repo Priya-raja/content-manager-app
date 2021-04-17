@@ -27,16 +27,16 @@ const ArrowFunction = () => <h1>I am arrow </h1>
 function Home() {
 const [value, setValue] = useState(10)
 console.log("Hi");
-const incrementValue =() => {
-  setValue(value + 1);
+const incrementValue =(incrementor) => {
+  setValue(value + incrementor);
 }
 
   return (
     <>
     {value}
       <h1>Hello World!</h1>
-      <button onClick={incrementValue}> + </button>
-      <button> - </button>
+      <button onClick={() => incrementValue(+1)}> + </button>
+      <button onClick={() => incrementValue(-1)}> - </button>
       <CompA />
     </>
     
