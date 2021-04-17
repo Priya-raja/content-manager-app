@@ -11,6 +11,9 @@ const ArrowFunction = () => <h1>I am arrow </h1>
      <h1>Comp A </h1>
     <p>Hello dear Comp A</p>
     <p>this is value from Home {props.myProps}</p>
+    <p>myProps2: {props.myProps2}</p>
+    <p>myProps3: {props.myProps3.toString()}</p>
+    <p>myProps4 {<props.myProps4 />}</p>
     
     </>
   )
@@ -39,6 +42,9 @@ const incrementValue =(incrementor) => {
       <button onClick={() => incrementValue(-1)}> - </button>
       <CompA
        myProps= {value}
+       myProps2 = "i am prop2"
+       myProps3 = {true}
+       myProps4 = {() => <div>I'm NEW JSX!</div>}
       />
     </>
     
