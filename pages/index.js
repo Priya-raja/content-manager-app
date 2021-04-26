@@ -1,53 +1,53 @@
 import Head from 'next/head';
-import React, {useState} from 'react';
+import React from 'react';
+import Navbar from "components/Navbar"
+import ResourceHighlight from "components/ResourceHighlight"
+import Newsletter from "components/Newsletter"
+import ResourceList from "components/ResourceList"
+import Layout from "components/Layout"
+import Footer from "components/Footer"
 
-
-const ArrowFunction = () => <h1>I am arrow </h1>
-  
- function CompA(props) {
+function Home({resources}) {
   return (
-    <>
-    <ArrowFunction/>
-     <h1>Comp A </h1>
-    <p>Hello dear Comp A</p>
-    <p>this is value from Home {props.myProps}</p>
-    <p>myProps2: {props.myProps2}</p>
-    <p>myProps3: {props.myProps3.toString()}</p>
-    <p>myProps4 {<props.myProps4 />}</p>
     
-    </>
+    <Layout>
+      <ResourceHighlight
+        resources = {resources.slice(0,2)}
+        >
+      </ResourceHighlight>
+      <Newsletter/>
+      <ResourceList
+      resources = {resources.slice(2)}
+      >
+      </ResourceList>
+      <Footer/>
+    </Layout>
+    
   )
 }
+//will be called everytime u visit the page
+//the data is always fresh
+export async function getServerSideProps() {
 
+  const resData = await fetch("http://localhost:3000/api/resources");
+  const data = await resData.json();
 
-//class
-//  class CompC extends React.Component {
-//    render() {
-//      return(
-//        <h1> Hello C</h1>
-//      )
-//    }
-//  }
-function Home() {
-const [value, setValue] = useState(10)
-console.log("Hi");
-const incrementValue =(incrementor) => {
-  setValue(value + incrementor);
+  return {
+    props: {
+      resources: data
+    }
+  }
 }
-  return (
-    <>
-    {value}
-      <h1>Hello World!</h1>
-      <button onClick={() => incrementValue(+1)}> + </button>
-      <button onClick={() => incrementValue(-1)}> - </button>
-      <CompA
-       myProps= {value}
-       myProps2 = "i am prop2"
-       myProps3 = {true}
-       myProps4 = {() => <div>I'm NEW JSX!</div>}
-      />
-    </>
-    
-  );
-}
+//will be called at build time, called only once 
+// export async function getStaticProps() {
+
+//   const resData = await fetch("http://localhost:3000/api/resources");
+//   const data = await resData.json();
+
+//   return {
+//     props: {
+//       resources: data
+//     }
+//   }
+// }
 export default Home;
