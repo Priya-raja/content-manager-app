@@ -1,8 +1,35 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Layout from 'components/Layout'
 
+
+const DEFAULT_DATA = {
+  title: " My name is Priya",
+  description:  "",
+  link: "",
+  priority: "2",
+  timeToFinish: 60
+
+}
 const ResourceCreate = () => {
-    return (
+  const submitForm = () => {
+    alert(JSON.stringify(form));
+  }
+  const resetForm = () => setForm(DEFAULT_DATA)
+   
+   const handleChange =(e) => {
+    
+    const { name, value } = e.target
+    setForm(
+      {
+        ...form,
+        [name]:value
+      
+      })
+
+  }
+   const [form, setForm] = useState(DEFAULT_DATA)
+   
+  return (
          <Layout>
              <div className="container">
                  <div className="columns">
@@ -12,32 +39,56 @@ const ResourceCreate = () => {
                              <form>
                              <div className="field">
                                 <label className="label">Title</label>
-                               <div class="control">
-                                <input class="input" type="text" placeholder="Learn React js"/>
+                               <div className="control">
+                                <input value = {form.title}
+                                onChange = {handleChange}
+                                name="title"
+                                className="input"
+                                
+                                type="text" 
+                                placeholder="Learn React js"/>
                               </div>
                             </div>
-                             
-                            
                             
                             <div className="field">
                               <label className="label">Description</label>
                               <div className="control">
-                                <textarea className="textarea" placeholder="Learn these technologies"></textarea>
+                                <textarea 
+                                value = {form.description}
+                                onChange = {handleChange}
+                                name ="description"
+                                className="textarea"
+                                
+                                 placeholder="Learn these technologies"></textarea>
                               </div>
                             </div>
 
                             <div className="field">
                                 <label className="label">Link</label>
                                <div class="control">
-                                <input class="input" type="text" placeholder="www.link.com"/>
+                                <input 
+                                value = {form.link}
+                                onChange = {handleChange}
+                                name = "link"
+                                class="input" 
+                                
+                                type="text" 
+                                placeholder="www.link.com"/>
                               </div>
                             </div>
 
                                   <div className="field">
                                     <label className="label">Priority</label>
                                     <div className="control">
-                                      <div className="select">
-                                        <select>
+                                      <div 
+                                      
+                                      className="select"
+                                       
+                                      >
+                                        <select value = {form.priority}
+                                           onChange = {handleChange}
+                                           name = "priority"
+                                        >
                                           <option>1</option>
                                           <option>2</option>
                                           <option>3</option>
@@ -52,17 +103,32 @@ const ResourceCreate = () => {
                             <div className="field">
                                 <label className="label">Time to finish</label>
                                <div class="control">
-                                <input class="input" type="text" placeholder="60 minutes"/>
+                                <input 
+                                value = {form.timeToFinish}
+                                onChange = {handleChange}
+                                name = "timeToFinish"
+                                class="input"
+                                
+                                 type="number" 
+                                 placeholder="60"/>
                               </div>
-                            </div>
-
-                            
+                              <p className="help">Time is in minutes</p>
+                            </div>                            
                             <div className="field is-grouped">
                                 <div className="control">
-                                <button className="button is-link">Submit</button>
+                                <button 
+                                type="button"
+                                onClick = {submitForm}
+                                className="button is-link">Submit</button>
                                 </div>
                                 <div className="control">
-                                <button className="button is-link is-light">Cancel</button>
+                                <button
+                                onClick = {resetForm}
+                                type ="button"
+                                
+                                 className="button is-link is-light"
+                                 
+                                >Cancel</button>
                                 </div>
                                 </div>
                              </form>
@@ -71,8 +137,7 @@ const ResourceCreate = () => {
                  </div>
              </div>
 </Layout>
-        
-    )
+        )
 }
 
 export default ResourceCreate
