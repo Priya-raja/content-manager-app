@@ -11,11 +11,60 @@ const ResourceCreate = () => {
                              <h1 className="title"> Add new Resource </h1>
                              <form>
                              <div className="field">
-                                <label className="label">Name</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Text input"/>
+                                <label className="label">Title</label>
+                               <div class="control">
+                                <input class="input" type="text" placeholder="Learn React js"/>
+                              </div>
                             </div>
-                        </div>
+                             
+                            
+                            
+                            <div className="field">
+                              <label className="label">Description</label>
+                              <div className="control">
+                                <textarea className="textarea" placeholder="Learn these technologies"></textarea>
+                              </div>
+                            </div>
+
+                            <div className="field">
+                                <label className="label">Link</label>
+                               <div class="control">
+                                <input class="input" type="text" placeholder="www.link.com"/>
+                              </div>
+                            </div>
+
+                                  <div className="field">
+                                    <label className="label">Priority</label>
+                                    <div className="control">
+                                      <div className="select">
+                                        <select>
+                                          <option>1</option>
+                                          <option>2</option>
+                                          <option>3</option>
+                                          
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                            
+
+                            <div className="field">
+                                <label className="label">Time to finish</label>
+                               <div class="control">
+                                <input class="input" type="text" placeholder="60 minutes"/>
+                              </div>
+                            </div>
+
+                            
+                            <div className="field is-grouped">
+                                <div className="control">
+                                <button className="button is-link">Submit</button>
+                                </div>
+                                <div className="control">
+                                <button className="button is-link is-light">Cancel</button>
+                                </div>
+                                </div>
                              </form>
                        </div>
                      </div>
