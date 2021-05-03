@@ -12,7 +12,13 @@ const DEFAULT_DATA = {
 }
 const ResourceCreate = () => {
   const submitForm = () => {
-    alert(JSON.stringify(form));
+    
+      fetch("/api/resources", {
+        body: JSON.stringify(form),
+        headers: {"Content-Type" : "application/json"},
+        method: "POST"
+
+      })
   }
   const resetForm = () => setForm(DEFAULT_DATA)
    
@@ -128,7 +134,7 @@ const ResourceCreate = () => {
                                 
                                  className="button is-link is-light"
                                  
-                                >Cancel</button>
+                                >Reset Form</button>
                                 </div>
                                 </div>
                              </form>
