@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Layout from 'components/Layout'
+import axios from "axios"
 
 
 const DEFAULT_DATA = {
@@ -13,12 +14,13 @@ const DEFAULT_DATA = {
 const ResourceCreate = () => {
   const submitForm = () => {
     
-      fetch("/api/resources", {
-        body: JSON.stringify(form),
-        headers: {"Content-Type" : "application/json"},
-        method: "POST"
+    axios.post("/api/resources",form);
+      // fetch("/api/resources", {
+      //   body: JSON.stringify(form),
+      //   headers: {"Content-Type" : "application/json"},
+      //   method: "POST"
 
-      })
+      // })
   }
   const resetForm = () => setForm(DEFAULT_DATA)
    
@@ -71,12 +73,12 @@ const ResourceCreate = () => {
 
                             <div className="field">
                                 <label className="label">Link</label>
-                               <div class="control">
+                               <div className="control">
                                 <input 
                                 value = {form.link}
                                 onChange = {handleChange}
                                 name = "link"
-                                class="input" 
+                                className="input" 
                                 
                                 type="text" 
                                 placeholder="www.link.com"/>
@@ -108,12 +110,12 @@ const ResourceCreate = () => {
 
                             <div className="field">
                                 <label className="label">Time to finish</label>
-                               <div class="control">
+                               <div className="control">
                                 <input 
                                 value = {form.timeToFinish}
                                 onChange = {handleChange}
                                 name = "timeToFinish"
-                                class="input"
+                                className="input"
                                 
                                  type="number" 
                                  placeholder="60"/>
