@@ -7,6 +7,7 @@ import ResourceList from "components/ResourceList"
 import Layout from "components/Layout"
 import Footer from "components/Footer"
 
+
 function Home({resources}) {
   return (
     

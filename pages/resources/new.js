@@ -14,7 +14,11 @@ const DEFAULT_DATA = {
 const ResourceCreate = () => {
   const submitForm = () => {
     
-    axios.post("/api/resources",form);
+    axios.post("/api/resources",form)
+    .then((res) => alert(res?.data))
+    .catch(err => {
+      alert(err?.response?.data)
+    });
       // fetch("/api/resources", {
       //   body: JSON.stringify(form),
       //   headers: {"Content-Type" : "application/json"},
