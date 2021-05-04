@@ -1,9 +1,10 @@
+import axios from "axios";
 
 export default async function resources(req,res) {
 
     if(req.method === "GET") {
 
-        const dataRes = await fetch("http://localhost:3000/api/resources");
+        const dataRes = await fetch("http://localhost:3001/api/resources");
         const data = await dataRes.json();
        return res.send(data);
     }
@@ -15,6 +16,15 @@ export default async function resources(req,res) {
     if (!title || !description || !link || !timeToFinish || !priority) {
       return res.status(422).send("Data are missing!");
     }
-        return res.send("I am sending POST");
+    try {
+        const axiosRes = await axios.post("http://localhost:3001/api/resources",req.body);
+        return res.send(axiosRes.data)
+    }catch {
+        return res.status(442).send("Data cannot be stored!")
     }
+    
+   
+    }
+
+   
 }
