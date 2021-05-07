@@ -1,7 +1,8 @@
 import React from 'react'
 import Layout from 'components/Layout'
+import resources from 'pages/api/resources';
 
-const ResourceDetail = ({resourceId}) => {
+const ResourceDetail = ({resource}) => {
     return (
         <Layout>
             <section className="hero ">
@@ -11,9 +12,9 @@ const ResourceDetail = ({resourceId}) => {
                 <div className="columns">
                     <div className="column is-8 is-offset-2">
                     <div className="content is-medium">
-                        <h2 className="subtitle is-4">{resourceId} </h2>
-                        <h1 className="title">Title</h1>
-                        <p>description</p>
+                        <h2 className="subtitle is-4">{resource.createdAt}</h2>
+                        <h1 className="title">{resource.title}</h1>
+                        <p>{resource.description}</p>
                     </div>
                     </div>
                 </div>
@@ -26,13 +27,14 @@ const ResourceDetail = ({resourceId}) => {
         
     )
 }
-export function getServerSideProps({params}) {
-    // console.log(query);
+export async function getServerSideProps({params}) {
+    const dataRes = await fetch(`http://localhost:3001/api/resources/${params.id}`);
+    const data = await dataRes.json();
+  
     return {
-        props: {
-            resourceId: params.id
-        }
+      props: {
+        resource: data
+      }
     }
-}
-
+  }
 export default ResourceDetail
