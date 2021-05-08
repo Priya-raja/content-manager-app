@@ -1,5 +1,6 @@
 // import { resources } from "api/data";
 import React from "react";
+import Link from 'next/link';
 
 const ResourceList = ({ resources }) => {
 
@@ -18,6 +19,10 @@ const ResourceList = ({ resources }) => {
                     <p className="has-text-dark">
                       {item.description}
                     </p>
+                    <Link href={`resources/${item.id}`}>
+                                        <a className="button is-link">
+                                            See Details</a>
+                                        </Link>
                   </div>
                 </div>
               ))

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Link from 'next/link';
 
 const ResourceHighlight = ( {resources} ) => {
     return (
@@ -14,6 +15,10 @@ const ResourceHighlight = ( {resources} ) => {
                                         <h2 className="subtitle is-4">{item.createdAt}</h2>
                                         <h1 className="title">{item.title}</h1>
                                         <p>{item.description}</p>
+                                        <Link href={`resources/${item.id}`}>
+                                        <a className="button is-link">
+                                            Details</a>
+                                        </Link>
                                     </div>
                                     </div>
                                 </div>
