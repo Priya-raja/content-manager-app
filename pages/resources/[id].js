@@ -1,8 +1,13 @@
 import React from 'react'
 import Layout from 'components/Layout'
 import resources from 'pages/api/resources';
+import { useRouter } from 'next/router';
 
 const ResourceDetail = ({resource}) => {
+    const router = useRouter();
+    if(router.isFallback) {
+        return <div>Loading data!</div>;
+    }
     return (
         <Layout>
             <section className="hero ">
